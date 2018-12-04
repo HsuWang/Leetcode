@@ -15,7 +15,7 @@ class Solution(object):
             return False
         return self.isBST(root.left,min_val,min(max_val,root.val)) and   self.isBST(root.right,max(min_val,root.val),max_val)
 
-         def isValidBST(self, root):
+    def isValidBST(self, root):
 
         
         return self.isBST(root,-sys.maxint,sys.maxint)
