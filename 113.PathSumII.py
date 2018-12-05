@@ -12,19 +12,22 @@ class Solution(object):
         :type sum: int
         :rtype: List[List[int]]
         """
-        
         def pathSumNode(root, sum,previous):
             if root is None:
                 return
             previous.append(root.val)
             if root.left is None and root.right is None :
                 if sum==root.val:
-                    out.append(previous)
+                    out.append(copy.deepcopy(previous))
+                previous.pop()
                 return
-                pathSumNode(root.left,sum-root.val,previous)
-                pathSumNode(root.right,sum-root.val,previous)
+            pathSumNode(root.left,sum-root.val,previous)
+            pathSumNode(root.right,sum-root.val,previous)
+            previous.pop()
+            
         out=list()
-        pathSumNode( root, sum,list())
+        tmp = list()
+        pathSumNode( root, sum,tmp)
         return out
         
                 
